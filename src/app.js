@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
+const userLog = require('./middlewares/userLogger');
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
+app.use(userLog);
 
 // ************ Template Engine - (don't touch) ************
 app.set('view engine', 'ejs');
